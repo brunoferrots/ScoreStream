@@ -2,9 +2,9 @@
 
 ### Specification:
 
-    * _Project for learning purposes_
-    * _Open to recommendations of patterns and optimizations_
-    * _Object-Oriented Code Design_
+* Project for learning purposes
+* Open to recommendations of patterns and optimizations
+* Object-Oriented Code Design
 
 **We'll return...**
 
