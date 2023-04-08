@@ -2,7 +2,7 @@ package br.com.lychee.scorestream.model;
 
 import br.com.lychee.scorestream.tracker.Ranked;
 
-public abstract class Title implements Ranked {
+public abstract class Title implements Ranked, Comparable<Title> {
     private String name;
     private int releaseYear;
     private boolean includeInPlan;
@@ -22,11 +22,9 @@ public abstract class Title implements Ranked {
     }
 
     protected Title (String name, int releaseYear) {
-        this.name = name;
-        this.releaseYear = releaseYear;
+        this.setName(name);
+        this.setReleaseYear(releaseYear);
     }
-
-
 
     public String showFeatures() {
         return """
@@ -56,7 +54,7 @@ public abstract class Title implements Ranked {
         return name;
     }
 
-    public void setName(String name) {
+    private void setName(String name) {
         this.name = name;
     }
 
@@ -64,7 +62,7 @@ public abstract class Title implements Ranked {
         return releaseYear;
     }
 
-    public void setReleaseYear(int releaseYear) {
+    private void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
     }
 
@@ -90,5 +88,10 @@ public abstract class Title implements Ranked {
 
     public void setLengthInMinutes(int lengthInMinutes) {
         this.lengthInMinutes = lengthInMinutes;
+    }
+
+    @Override
+    public int compareTo(Title otherTitle) {
+        return this.getName().compareTo(otherTitle.getName());
     }
 }

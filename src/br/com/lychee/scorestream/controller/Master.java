@@ -5,6 +5,8 @@ import br.com.lychee.scorestream.model.Series;
 import br.com.lychee.scorestream.tracker.RecommendationFilter;
 import br.com.lychee.scorestream.tracker.TimeTracker;
 
+import java.util.ArrayList;
+
 public class Master {
     public static void main(String[] args) {
         Movie johnWick = new Movie("John Wick 4", 2023, 180);
@@ -31,5 +33,18 @@ public class Master {
 
         RecommendationFilter recommendationFilter = new RecommendationFilter();
         System.out.println(johnWick.getName()+ " - " + recommendationFilter.filter(johnWick));
+        //NEW AWESOME SYNTAX
+        var catBoots = new Movie("Cat Boots 2", 2023, 160);
+        catBoots.evaluates(10);
+
+        var movieList = new ArrayList<Movie>();
+        movieList.add(johnWick);
+        movieList.add(catBoots);
+        System.out.println(movieList.get(0).getName());
+        System.out.println(movieList.get(1).getName());
+
+        System.out.println(movieList);
+        System.out.println(movieList.get(1).toString());
+
     }
 }
