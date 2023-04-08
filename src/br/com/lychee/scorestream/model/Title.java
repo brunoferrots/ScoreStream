@@ -1,6 +1,7 @@
 package br.com.lychee.scorestream.model;
 
 import br.com.lychee.scorestream.tracker.Ranked;
+import com.google.gson.annotations.SerializedName;
 
 public abstract class Title implements Ranked, Comparable<Title> {
     private String name;
@@ -9,11 +10,6 @@ public abstract class Title implements Ranked, Comparable<Title> {
     private double sumRating;
     private int totalRatings = 0;
     private int lengthInMinutes;
-
-    @Override
-    public int getRanked() {
-        return (int) this.handleMedia() / 2;
-    }
 
     protected Title (String name, int releaseYear, int lengthInMinutes) {
         this.setName(name);
@@ -26,6 +22,17 @@ public abstract class Title implements Ranked, Comparable<Title> {
         this.setReleaseYear(releaseYear);
     }
 
+    protected Title (TitleOmdb titleOmdb) {
+        this.setName(titleOmdb.title());
+        this.setReleaseYear(Integer.valueOf(titleOmdb.year().substring(0,3)));
+        this.setLengthInMinutes(Integer.valueOf(titleOmdb.runtime().substring(0,2)));
+    }
+
+
+    @Override
+    public int getRanked() {
+        return (int) this.handleMedia() / 2;
+    }
     public String showFeatures() {
         return """
                 Movie Features:
@@ -93,5 +100,18 @@ public abstract class Title implements Ranked, Comparable<Title> {
     @Override
     public int compareTo(Title otherTitle) {
         return this.getName().compareTo(otherTitle.getName());
+    }
+
+    @Override
+    public String toString() {
+        return """
+                Name movie:    %s
+                Release year:  %d
+                Runtime:       %d
+                """.formatted(
+                        this.getName(),
+                        this.getReleaseYear(),
+                        this.getLengthInMinutes()
+                );
     }
 }

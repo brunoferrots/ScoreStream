@@ -5,11 +5,8 @@ public class Movie extends Title {
         super(name, releaseYear, lengthInMinutes);
     }
 
-    @Override
-    public String toString() {
-        return """
-                Name movie:    %s
-                Release year:  %d
-                """.formatted(super.getName(), super.getReleaseYear());
+    public Movie(TitleOmdb titleOmdb) {
+        super(titleOmdb);
     }
+
 }

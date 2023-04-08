@@ -10,6 +10,8 @@ public class Series extends Title {
         super(name, releaseYear);
     }
 
+
+
     @Override
     public int getLengthInMinutes() {
         return episodes * season * minutesPerEpisodes;
