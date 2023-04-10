@@ -1,0 +1,11 @@
+br\com\lychee\scorestream\model\Episodes.class
+br\com\lychee\scorestream\model\Title.class
+br\com\lychee\scorestream\model\Series.class
+br\com\lychee\scorestream\model\TitleOmdb.class
+br\com\lychee\scorestream\tracker\Ranked.class
+br\com\lychee\scorestream\tracker\TimeTracker.class
+br\com\lychee\scorestream\model\Movie.class
+br\com\lychee\scorestream\controller\MasterList.class
+br\com\lychee\scorestream\controller\SearchTitle.class
+br\com\lychee\scorestream\controller\Master.class
+br\com\lychee\scorestream\tracker\RecommendationFilter.class
