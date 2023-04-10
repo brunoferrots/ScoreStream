@@ -3,6 +3,8 @@ package br.com.lychee.scorestream.model;
 import br.com.lychee.scorestream.tracker.Ranked;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 public abstract class Title implements Ranked, Comparable<Title> {
     private String name;
     private int releaseYear;
@@ -24,8 +26,14 @@ public abstract class Title implements Ranked, Comparable<Title> {
 
     protected Title (TitleOmdb titleOmdb) {
         this.setName(titleOmdb.title());
-        this.setReleaseYear(Integer.valueOf(titleOmdb.year().substring(0,3)));
-        this.setLengthInMinutes(Integer.valueOf(titleOmdb.runtime().substring(0,2)));
+        this.setReleaseYear(Integer.parseInt(titleOmdb.year().replaceAll("[^0-9]+", "")));
+
+        if (titleOmdb.runtime().equals("N/A")) {
+            this.setLengthInMinutes(Integer.parseInt(titleOmdb.runtime().replaceAll("[^0-9]+", "0")));
+        } else {
+            this.setLengthInMinutes(Integer.parseInt(titleOmdb.runtime().replaceAll("[^0-9]+", "")));
+        }
+
     }
 
 
